@@ -5,8 +5,17 @@ except ImportError:
 
 import addict
 
-SHORT='Addict is a dictionary whose items can be set using both attribute and item syntax.'
-LONG='Addict is a module that exposes a Dictionary subclass that allows items to be set like attributes. Values are gettable and settable using both attribute and item syntax. For more info check out the README at \'github.com/mewwts/addict\'.'
+SHORT = ('Addict is a dictionary whose items can be set using both attribute '
+         'and item syntax.')
+LONG = """
+Addict is a module that exposes a Dictionary subclass that allows items to be
+set like attributes. Values are gettable and settable using both attribute and
+item syntax. For more info check out the README at 'github.com/mewwts/addict'.
+"""
+
+tests_require = [
+    'pytest',
+]
 
 setup(
     name='addict',
@@ -26,6 +35,11 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ),
+    setup_requires=['pytest-runner'],
+    tests_require=tests_require,
+    extras_require={
+        'dev': tests_require,
+    },
     description=SHORT,
     long_description=LONG,
     test_suite='test_addict'
