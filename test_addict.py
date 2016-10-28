@@ -287,11 +287,8 @@ def test_set_prop_invalid():
     def set_items():
         prop.items = 3
 
-    with pytest.raises(AttributeError):
-        set_keys()
-
-    with pytest.raises(AttributeError):
-        set_items()
+    pytest.raises(AttributeError, set_keys)
+    pytest.raises(AttributeError, set_items)
 
     assert prop == {}
 
@@ -435,8 +432,7 @@ def test_update_with_multiple_args():
     def update():
         org.update({'a': 2}, {'a': 1})
 
-    with pytest.raises(TypeError):
-        update()
+    pytest.raises(TypeError, update)
 
 
 def test_hook_in_constructor():
@@ -548,4 +544,4 @@ if __name__ == '__main__':
     Allow for these test cases to be run from the command line
     via `python test_addict.py`
     """
-    pass
+    pytest.main(['-sv', __file__])
